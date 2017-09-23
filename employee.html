@@ -83,16 +83,6 @@
       <input type="text" class="form-control" id="monthly-rate">
     </div>   
     
-    <div class="form-group">
-      <label for="exampleInputPassword1">Months Worked</label>
-     <input type="text" class="form-control" id="months-worked">
-    </div>
-    
-    
-    <div class="form-group">
-      <label for="exampleInputPassword1">Total Billed</label>
-      <input type="text" class="form-control" id="total-billed">
-    <br>  
     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
     </div>
   
@@ -119,25 +109,26 @@
 
   var dataRef = firebase.database();
 
+$("#submit").on("click", function (event){
+  event.preventDefault();
+
+
   var employeeName = "";
   var role = "";
   var startDate = "";
   var monthlyRate = "";
-  var monthsWorked = "";
-  var totalBilled = "";
+ 
 
   employeeName = $("#employee-name").val().trim(); 
   role = $("#role").val().trim(); 
   startDate = $("#start-date").val().trim(); 
   monthlyRate = $("#monthly-rate").val().trim(); 
-  monthsWorked = $("#months-worked").val().trim(); 
-  totalBilled = $("#total-billed").val().trim(); 
+   
   console.log(employeeName);
   console.log(role);
   console.log(startDate);
   console.log(monthlyRate);
-  console.log(monthsWorked);
-  console.log(totalBilled);
+ 
 
 
 
@@ -151,11 +142,12 @@
 
         monthlyrate: monthlyRate,
 
-        monthsworked: monthsWorked,
+        //monthsworked: monthsWorked,
 
-        totalbilled: totalBilled
+        //totalbilled: totalBilled
 
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
+        //dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
 
       });
 
