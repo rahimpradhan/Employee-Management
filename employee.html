@@ -51,10 +51,6 @@
     </table>
 
 
-
-
-
-
     </div>
   </div>
   <br>
@@ -97,7 +93,7 @@
       <label for="exampleInputPassword1">Total Billed</label>
       <input type="text" class="form-control" id="total-billed">
     <br>  
-    <button type="submit" id="search" class="btn btn-primary">Submit</button>
+    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
     </div>
   
   
@@ -107,22 +103,72 @@
     </div>
   </div>
 
-
-
- 
-
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
 <script type="text/javascript">
-	$("#search").on("click", function(){
-		event.preventDefault();
-		console.log("success");
-	});
-	$("#clear").on("click", function(){
-		event.preventDefault();
-		console.log("success");
-	});
+    // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBbmrPCXsJ5JVYjymzJNCeul0p-TSbvsKI",
+    authDomain: "project921-29e87.firebaseapp.com",
+    databaseURL: "https://project921-29e87.firebaseio.com",
+    projectId: "project921-29e87",
+    storageBucket: "project921-29e87.appspot.com",
+    messagingSenderId: "53981115872"
+  };
+  firebase.initializeApp(config);
+
+  var dataRef = firebase.database();
+
+  var employeeName = "";
+  var role = "";
+  var startDate = "";
+  var monthlyRate = "";
+  var monthsWorked = "";
+  var totalBilled = "";
+
+  employeeName = $("#employee-name").val().trim(); 
+  role = $("#role").val().trim(); 
+  startDate = $("#start-date").val().trim(); 
+  monthlyRate = $("#monthly-rate").val().trim(); 
+  monthsWorked = $("#months-worked").val().trim(); 
+  totalBilled = $("#total-billed").val().trim(); 
+  console.log(employeeName);
+  console.log(role);
+  console.log(startDate);
+  console.log(monthlyRate);
+  console.log(monthsWorked);
+  console.log(totalBilled);
+
+
+
+ dataRef.ref().push({
+
+        employee: employeeName,
+
+        role: role,
+
+        startdate: startDate,
+
+        monthlyrate: monthlyRate,
+
+        monthsworked: monthsWorked,
+
+        totalbilled: totalBilled
+
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+
+      });
+
+
+
+
+
+
+	
+
+
+
+
 </script>
 
 </body>
